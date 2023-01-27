@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1669812007311-1" author="DELL (generated)">
+        <createSequence incrementBy="50" sequenceName="sequence_generator" startValue="1"/>
+    </changeSet>
+    <changeSet id="1669812007311-2" author="DELL (generated)">
+        <createSequence incrementBy="1" sequenceName="user_role_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1669812007311-3" author="DELL (generated)">
+        <createTable tableName="jhi_date_time_wrapper">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jhi_date_time_wrapper"/>
+            </column>
+            <column name="instant" type="DATETIME"/>
+            <column name="local_date_time" type="DATETIME"/>
+            <column name="offset_date_time" type="timestamp with time zone"/>
+            <column name="zoned_date_time" type="timestamp with time zone"/>
+            <column name="local_time" type="TIME"/>
+            <column name="offset_time" type="time with time zone"/>
+            <column name="local_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1669812007311-4" author="DELL (generated)">
+        <createTable tableName="roles">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
+            </column>
+            <column name="created_at" type="DATETIME"/>
+            <column name="update_at" type="DATETIME"/>
+            <column name="delete_at" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1669812007311-5" author="DELL (generated)">
+        <createTable tableName="user_role">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_role"/>
+            </column>
+            <column name="created_at" type="DATETIME"/>
+            <column name="update_at" type="DATETIME"/>
+            <column name="delete_at" type="DATETIME"/>
+            <column name="user_id" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1669812007311-6" author="DELL (generated)">
+        <createTable tableName="users">
+            <column name="id" type="CHAR(32)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="created_at" type="DATETIME"/>
+            <column name="update_at" type="DATETIME"/>
+            <column name="delete_at" type="DATETIME"/>
+            <column name="password" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(50)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="image_url" type="varchar(250)"/>
+            <column name="activation_key" type="varchar(250)"/>
+            <column defaultValue="ACTIVE" name="status" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="10" name="age" type="int"/>
+            <column name="gender" type="varchar(20)"/>
+            <column name="birth_day" type="timestamp"/>
+            <column name="address" type="varchar(50)"/>
+            <column name="identity" type="varchar(50)"/>
+            <column name="phone" type="varchar(50)"/>
+            <column name="role" type="varchar(50)"/>
+            <column defaultValueNumeric="0" name="total_money" type="decimal(15,2)"/>
+            <column name="user_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="facebook" type="varchar(250)"/>
+            <column name="twitter" type="varchar(250)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1669812007311-7" author="DELL (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

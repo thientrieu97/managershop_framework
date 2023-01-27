@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1671678850029-3" author="DELL (generated)">
+        <dropColumn columnName="qty" tableName="orders"/>
+    </changeSet>
+    <changeSet id="1671678850029-1" author="DELL (generated)">
+        <dropColumn columnName="total_money" tableName="users"/>
+    </changeSet>
+    <changeSet id="1671678850029-2" author="DELL (generated)">
+        <addColumn tableName="users">
+            <column defaultValueNumeric="0" name="total_money" type="decimal(15,2)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

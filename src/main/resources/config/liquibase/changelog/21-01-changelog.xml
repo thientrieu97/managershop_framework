@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1671564509961-3" author="DELL (generated)">
+        <createTable tableName="orders">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_orders"/>
+            </column>
+            <column name="created_at" type="DATETIME"/>
+            <column name="update_at" type="DATETIME"/>
+            <column name="delete_at" type="DATETIME"/>
+            <column name="customer_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1671564509961-4" author="DELL (generated)">
+        <addColumn tableName="product_order">
+            <column name="qty" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1671564509961-5" author="DELL (generated)">
+        <addNotNullConstraint columnName="qty" tableName="product_order"/>
+    </changeSet>
+    <changeSet id="1671564509961-6" author="DELL (generated)">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="product_order"
+                                 constraintName="FK_PRODUCT_ORDER_ON_ORDER" referencedColumnNames="id"
+                                 referencedTableName="orders"/>
+    </changeSet>
+    <changeSet id="1671564509961-7" author="DELL (generated)">
+        <dropForeignKeyConstraint baseTableName="product_order" constraintName="fk_product_order_on_order"/>
+    </changeSet>
+    <changeSet id="1671564509961-8" author="DELL (generated)">
+        <dropTable cascadeConstraints="true" tableName="order"/>
+    </changeSet>
+    <changeSet id="1671564509961-1" author="DELL (generated)">
+        <dropColumn columnName="total_money" tableName="users"/>
+    </changeSet>
+    <changeSet id="1671564509961-2" author="DELL (generated)">
+        <addColumn tableName="users">
+            <column defaultValueNumeric="0" name="total_money" type="decimal(15,2)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

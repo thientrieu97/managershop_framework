@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="vi">
+<head>
+    <title th:text="#{email.congratulation.title}">JHipster congratulation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+</head>
+<body>
+<p th:text="#{email.congratulation.greeting(${congratulation.email})}"></p>
+<p th:text="#{email.congratulation.text1(${congratulation.projectName})}"></p>
+<p>
+<p th:text="#{email.congratulation.text8}"></p>
+<p th:text="#{email.congratulation.text3(${congratulation.projectName})}"></p>
+<p th:text="#{email.congratulation.text4(${congratulation.moneyDonate})}"></p>
+<p th:text="#{email.congratulation.text5}"></p>
+<p th:text="#{email.congratulation.text6(${congratulation.createAt})}"></p>
+<p th:text="#{email.congratulation.text7}"></p>
+</p>
+<p>
+    <span th:text="#{email.congratulation.text2}">Regards, </span>
+    <br />
+    <em th:text="#{email.congratulation.signature}">JHipster.</em>
+</p>
+</body>
+</html>
